@@ -59,7 +59,7 @@ function preprocessing_fmri_auditory(task)
         job{1}.spm.spatial.realign.estwrite.roptions.mask     = 1         ; % resamplimg option using mask
         job{1}.spm.spatial.realign.estwrite.roptions.prefix   = 'r'       ; % output file prefix
         spm_jobman('run',job) % execute the batch
-        clear Job % clear job 
+        clear job % clear job 
     end
     %% 
      %COREGISTRATION 
@@ -124,7 +124,7 @@ function preprocessing_fmri_auditory(task)
         job{1}.spm.spatial.preproc.warp.bb               = [NaN NaN NaN;NaN NaN NaN]; %Bounding box
         %save job % save the setup into a matfile called preprocessing_batch.mat
         spm_jobman('run',job) % execute the batch
-        clear job% clear job
+        clear job %clear job
     end
     %% 
      %NORMALISATION 
