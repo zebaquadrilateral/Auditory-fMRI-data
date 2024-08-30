@@ -52,28 +52,5 @@ job{1}.spm.stats.fmri_est.spmmat = {strcat(specdir,'\SPM.mat')};
 job{1}.spm.stats.fmri_est.write_residuals = 0;
 job{1}.spm.stats.fmri_est.method.Classical = 1;
 spm_jobman('run',job)
-%% factorial design 
-%-----------------------------------------------------------------------
-job = [];
-job{1}.spm.stats.factorial_design.dir = {SomaTIdir};
-
-files = cellstr(spm_select('FPListRec', 'C:\Users\zebaq\Documents\MATLAB\MoAEpilot\SomaTI-Example\', '^con_0009.img$')); 
-job{1}.spm.stats.factorial_design.des.t1.scans = strcat(files, ',1');
-
-job{1}.spm.stats.factorial_design.cov = struct('c', {}, 'cname', {}, 'iCFI', {}, 'iCC', {});
-job{1}.spm.stats.factorial_design.multi_cov = struct('files', {}, 'iCFI', {}, 'iCC', {});
-job{1}.spm.stats.factorial_design.masking.tm.tm_none = 1;
-job{1}.spm.stats.factorial_design.masking.im = 1;
-job{1}.spm.stats.factorial_design.masking.em = {''};
-job{1}.spm.stats.factorial_design.globalc.g_omit = 1;
-job{1}.spm.stats.factorial_design.globalm.gmsca.gmsca_no = 1;
-job{1}.spm.stats.factorial_design.globalm.glonorm = 1;
-job{2}.spm.stats.fmri_est.spmmat(1) = cfg_dep('Factorial design specification: SPM.mat File', substruct('.','val', '{}',{1}, '.','val', '{}',{1}, '.','val', '{}',{1}), substruct('.','spmmat'));
-job{2}.spm.stats.fmri_est.write_residuals = 0;
-job{2}.spm.stats.fmri_est.method.Classical = 1;
-spm_jobman('run',job)
-
-
-
 
 
